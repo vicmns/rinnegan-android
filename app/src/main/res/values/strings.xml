@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RinneganV2</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="protanopia_filter">Protanopia filter</string>
+    <string name="deuteranopia_filter">Deuteranopia filter</string>
+    <string name="tritanopia_filter">Tritanopia filter</string>
+</resources>

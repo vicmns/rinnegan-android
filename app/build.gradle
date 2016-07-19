@@ -1,0 +1,209 @@
+apply plugin: 'com.android.model.application'
+
+def opencvandroid_sdk_path = file(project(':opencvandroid').projectDir).absolutePath + "/src/main"
+
+model {
+
+    repositories {
+        libs(PrebuiltLibraries) {
+            opencvcore {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_java3.so")
+                }
+            }
+
+            opencv {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_calib3d.a")
+                }
+            }
+
+            opencv1 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_core.a")
+                }
+            }
+
+            opencv2 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_features2d.a")
+                }
+            }
+
+            opencv3 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_flann.a")
+                }
+            }
+
+            opencv4 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_highgui.a")
+                }
+            }
+
+            opencv5 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_imgcodecs.a")
+                }
+            }
+
+            opencv6 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_imgproc.a")
+                }
+            }
+
+            opencv7 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_ml.a")
+                }
+            }
+
+            opencv8 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_objdetect.a")
+                }
+            }
+
+            opencv9 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_photo.a")
+                }
+            }
+
+            opencv10 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_shape.a")
+                }
+            }
+
+            opencv11 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_stitching.a")
+                }
+            }
+
+            opencv12 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_superres.a")
+                }
+            }
+
+            opencv13 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_video.a")
+                }
+            }
+
+            opencv14 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_videoio.a")
+                }
+            }
+
+            opencv15 {
+                headers.srcDir "${opencvandroid_sdk_path}/jni/include/opencv2"
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file("${opencvandroid_sdk_path}/jniLibs/${targetPlatform.getName()}/libopencv_videostab.a")
+                }
+            }
+        }
+    }
+
+    android {
+        compileSdkVersion = 23
+        buildToolsVersion = "23.0.2"
+
+        defaultConfig.with {
+            applicationId = "com.lonelystudios.rinneganv2"
+            minSdkVersion.apiLevel = 16
+            targetSdkVersion.apiLevel = 23
+            versionCode = 1
+            versionName = "1.0"
+        }
+    }
+
+    /*
+     * native build settings
+     */
+    android.ndk {
+        moduleName = "color_filter"
+        abiFilters.addAll("armeabi", "armeabi-v7a", "x86", "mips")
+        /*
+         * Other ndk flags configurable here are
+         * cppFlags += "-fno-rtti"
+         * cppFlags += "-fno-exceptions"
+         * ldLibs    = ["android", "log"]
+         * stl       = "system"
+         */
+        platformVersion = 16 //same as minSdkVersion.apiLevel for better compatibility
+        cppFlags.add("-std=c++11")
+        cppFlags.add("-fexceptions")
+        def jniPath = opencvandroid_sdk_path + "/jni/"
+        //cppFlags += "-I${file(jniPath)}".toString()
+        println jniPath
+        file(jniPath).eachDirRecurse { dir ->
+            cppFlags.add("-I${file(dir)}".toString())
+        }
+
+        stl = "gnustl_static"
+        ldLibs.addAll(["atomic", "log", "android"])
+    }
+
+    android.sources {
+        main {
+            jni {
+                dependencies {
+                    library "opencvcore" linkage "static"
+                    library "opencv" linkage "static"
+                    library "opencv1" linkage "static"
+                    library "opencv2" linkage "static"
+                    library "opencv3" linkage "static"
+                    library "opencv4" linkage "static"
+                    library "opencv5" linkage "static"
+                    library "opencv6" linkage "static"
+                    library "opencv7" linkage "static"
+                    library "opencv8" linkage "static"
+                    library "opencv9" linkage "static"
+                    library "opencv10" linkage "static"
+                    library "opencv11" linkage "static"
+                    library "opencv12" linkage "static"
+                    library "opencv13" linkage "static"
+                    library "opencv14" linkage "static"
+                    library "opencv15" linkage "static"
+                }
+            }
+        }
+    }
+
+    android.buildTypes {
+        release {
+            minifyEnabled = false
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile project(':opencvandroid')
+}
